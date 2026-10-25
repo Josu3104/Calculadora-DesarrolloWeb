@@ -13,49 +13,70 @@
     <div class="calculator-wrapper">
         <div class="calculator-container">
 
-            <!-- Pantalla / Display -->
             <div class="calculator-screen">
                 <div class="screen-main" id="display">0</div>
             </div>
 
-            <!-- Botones de paréntesis ( y ) -->
             <div class="paren-row">
-                <button type="button" class="calc-btn btn-op btn-paren">(</button>
-                <button type="button" class="calc-btn btn-op btn-paren">)</button>
+                <button type="button" class="calc-btn btn-op btn-paren" onclick="mostrar(abrirParentesis())">(</button>
+                <button type="button" class="calc-btn btn-op btn-paren" onclick="mostrar(cerrarParentesis())">)</button>
             </div>
 
-            <!-- Cuadrícula de botones básicos (4 columnas) -->
             <div class="buttons-grid">
-                <!-- Fila 1 -->
-                <button type="button" class="calc-btn btn-clear">C</button>
-                <button type="button" class="calc-btn btn-op">&divide;</button>
-                <button type="button" class="calc-btn btn-op">&times;</button>
-                <button type="button" class="calc-btn btn-op">&minus;</button>
+                <button type="button" class="calc-btn btn-clear" onclick="mostrar(limpiar())">C</button>
+                <button type="button" class="calc-btn btn-op" onclick="mostrar(agregarOperador('/'))">&divide;</button>
+                <button type="button" class="calc-btn btn-op" onclick="mostrar(agregarOperador('*'))">&times;</button>
+                <button type="button" class="calc-btn btn-op" onclick="mostrar(agregarOperador('-'))">&minus;</button>
 
-                <!-- Fila 2 -->
-                <button type="button" class="calc-btn btn-num">7</button>
-                <button type="button" class="calc-btn btn-num">8</button>
-                <button type="button" class="calc-btn btn-num">9</button>
-                <button type="button" class="calc-btn btn-op btn-plus">+</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('7'))">7</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('8'))">8</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('9'))">9</button>
+                <button type="button" class="calc-btn btn-op btn-plus"
+                    onclick="mostrar(agregarOperador('+'))">+</button>
 
-                <!-- Fila 3 -->
-                <button type="button" class="calc-btn btn-num">4</button>
-                <button type="button" class="calc-btn btn-num">5</button>
-                <button type="button" class="calc-btn btn-num">6</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('4'))">4</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('5'))">5</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('6'))">6</button>
 
-                <!-- Fila 4 -->
-                <button type="button" class="calc-btn btn-num">1</button>
-                <button type="button" class="calc-btn btn-num">2</button>
-                <button type="button" class="calc-btn btn-num">3</button>
-                <button type="button" class="calc-btn btn-equals">=</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('1'))">1</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('2'))">2</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarNumero('3'))">3</button>
+                <button type="button" class="calc-btn btn-equals" onclick="resolver()">=</button>
 
-                <!-- Fila 5 -->
-                <button type="button" class="calc-btn btn-num btn-zero">0</button>
-                <button type="button" class="calc-btn btn-num">.</button>
+                <button type="button" class="calc-btn btn-num btn-zero" onclick="mostrar(agregarNumero('0'))">0</button>
+                <button type="button" class="calc-btn btn-num" onclick="mostrar(agregarDecimal())">.</button>
             </div>
 
         </div>
     </div>
+
+    <script src="input.js"></script>
+    <script>
+        const pantalla = document.getElementById("display");
+
+        function mostrar(texto) {
+            if (texto === "") {
+                pantalla.textContent = "0";
+                return;
+            }
+            pantalla.textContent = texto
+                .replace(/\*/g, "×")
+                .replace(/\//g, "÷")
+                .replace(/-/g, "−");
+
+        }
+
+        function resolver() {
+            if (obtenerExpresion() === "") return;
+
+            if (!esExpresionValida()) {
+                pantalla.textContent = "Syntax Error";
+                return;
+            }
+
+            // aqui van operaciones aritmeticas
+        }
+    </script>
 
 </body>
 
