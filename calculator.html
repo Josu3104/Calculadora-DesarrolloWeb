@@ -1,36 +1,58 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="calculator-container"
-        style="width: 300px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
-        <div class="screen">
-            <input type="text" class="screen-input"
-                style="width: 100%; height: 50px; font-size: 24px; text-align: right;" readonly>
-        </div>
-        <div class="operands" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-            <button class="operand">+</button>
-            <button class="operand">-</button>
-            <button class="operand">*</button>
-            <button class="operand">/</button>
-        </div>
-        <div class="numpad" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+    <div class="calculator-wrapper">
+        <div class="calculator-container">
 
-            <button class="num">1</button>
-            <button class="num">1</button>
-            <button class="num">1</button>
-            <button class="num">1</button>
-            <button class="num">1</button>
-            <button class="num">1</button>
-            <button class="num">1</button>
-            <button class="num">1</button>
-            <button class="num">1</button>
+            <!-- Pantalla / Display -->
+            <div class="calculator-screen">
+                <div class="screen-main" id="display">0</div>
+            </div>
+
+            <!-- Botones de paréntesis ( y ) -->
+            <div class="paren-row">
+                <button type="button" class="calc-btn btn-op btn-paren">(</button>
+                <button type="button" class="calc-btn btn-op btn-paren">)</button>
+            </div>
+
+            <!-- Cuadrícula de botones básicos (4 columnas) -->
+            <div class="buttons-grid">
+                <!-- Fila 1 -->
+                <button type="button" class="calc-btn btn-clear">C</button>
+                <button type="button" class="calc-btn btn-op">&divide;</button>
+                <button type="button" class="calc-btn btn-op">&times;</button>
+                <button type="button" class="calc-btn btn-op">&minus;</button>
+
+                <!-- Fila 2 -->
+                <button type="button" class="calc-btn btn-num">7</button>
+                <button type="button" class="calc-btn btn-num">8</button>
+                <button type="button" class="calc-btn btn-num">9</button>
+                <button type="button" class="calc-btn btn-op btn-plus">+</button>
+
+                <!-- Fila 3 -->
+                <button type="button" class="calc-btn btn-num">4</button>
+                <button type="button" class="calc-btn btn-num">5</button>
+                <button type="button" class="calc-btn btn-num">6</button>
+
+                <!-- Fila 4 -->
+                <button type="button" class="calc-btn btn-num">1</button>
+                <button type="button" class="calc-btn btn-num">2</button>
+                <button type="button" class="calc-btn btn-num">3</button>
+                <button type="button" class="calc-btn btn-equals">=</button>
+
+                <!-- Fila 5 -->
+                <button type="button" class="calc-btn btn-num btn-zero">0</button>
+                <button type="button" class="calc-btn btn-num">.</button>
+            </div>
 
         </div>
     </div>
