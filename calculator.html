@@ -51,6 +51,7 @@
     </div>
 
     <script src="input.js"></script>
+    <script src="multiplicacion.js"></script>
     <script>
         const pantalla = document.getElementById("display");
 
@@ -74,7 +75,16 @@
                 return;
             }
 
-            // aqui van operaciones aritmeticas
+            try {
+                let expr = obtenerExpresion();
+                expr = resolverMultiplicacion(expr);
+                const resultado = eval(expr);
+
+                establecerExpresion(resultado);
+                mostrar(String(resultado));
+            } catch (error) {
+                pantalla.textContent = "Error";
+            }
         }
     </script>
 

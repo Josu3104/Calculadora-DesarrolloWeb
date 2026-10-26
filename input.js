@@ -89,3 +89,8 @@ function esExpresionValida() {
 function obtenerExpresion() {
     return expresion;
 }
+
+function establecerExpresion(nuevaExpresion) {
+    expresion = String(nuevaExpresion);
+    return expresion;
+}
