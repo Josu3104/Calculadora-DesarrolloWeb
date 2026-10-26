@@ -52,6 +52,7 @@
 
     <script src="input.js"></script>
     <script src="multiplicacion.js"></script>
+    <script src="division.js"></script>
     <script>
         const pantalla = document.getElementById("display");
 
@@ -77,8 +78,25 @@
 
             try {
                 let expr = obtenerExpresion();
+
+                // 1. Resolver paréntesis de adentro hacia afuera
+                while (expr.includes("(")) {
+                    expr = expr.replace(/\(([^()]+)\)/, (_, contenido) => {
+                        contenido = resolverMultiplicacion(contenido);
+                        contenido = resolverDivision(contenido);
+                        return eval(contenido);
+                    });
+                }
+
+                // 2. Resolver operaciones restantes fuera de paréntesis
                 expr = resolverMultiplicacion(expr);
+                expr = resolverDivision(expr);
                 const resultado = eval(expr);
+
+                if (isNaN(resultado) || !isFinite(resultado)) {
+                    pantalla.textContent = "Error";
+                    return;
+                }
 
                 establecerExpresion(resultado);
                 mostrar(String(resultado));
