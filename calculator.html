@@ -53,6 +53,7 @@
     <script src="input.js"></script>
     <script src="multiplicacion.js"></script>
     <script src="division.js"></script>
+    <script src="subtraction.js"></script>
     <script src="addition.js"></script>
     <script>
         const pantalla = document.getElementById("display");
@@ -85,6 +86,8 @@
                     expr = expr.replace(/\(([^()]+)\)/, (_, contenido) => {
                         contenido = resolverMultiplicacion(contenido);
                         contenido = resolverDivision(contenido);
+                        contenido = resolverResta(contenido);
+                        contenido = resolverSuma(contenido);
                         return eval(contenido);
                     });
                 }
@@ -92,6 +95,7 @@
                 // 2. Resolver operaciones restantes fuera de paréntesis
                 expr = resolverMultiplicacion(expr);
                 expr = resolverDivision(expr);
+                expr = resolverResta(expr);
                 expr = resolverSuma(expr);
                 const resultado = eval(expr);
 

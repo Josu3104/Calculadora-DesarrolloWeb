@@ -4,11 +4,11 @@ function sumar(a, b) {
 }
 
 function resolverSuma(expr) {
-    const patron = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:[+-](?:\d+\.?\d*|\.\d+))*$/;
+    const patron = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:\+[+-]?(?:\d+\.?\d*|\.\d+))*$/;
     if (!patron.test(expr)) return expr;
 
     return expr
-        .match(/[+-]?(?:\d+\.?\d*|\.\d+)/g)
-        .reduce((total, numero) => sumar(total, numero), 0)
+        .match(/(?:^|\+)([+-]?(?:\d+\.?\d*|\.\d+))/g)
+        .reduce((total, numero) => sumar(total, numero.replace(/^\+/, "")), 0)
         .toString();
 }
